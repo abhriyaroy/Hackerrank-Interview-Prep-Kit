@@ -19,8 +19,21 @@ import kotlin.text.*
 
 // Complete the minimumSwaps function below.
 fun minimumSwaps(arr: Array<Int>): Int {
-
-
+    var count = 0
+    var i = 0
+    while (i < arr.size) {
+        if (arr[i] != i + 1) {
+            while (arr[i] != i + 1) {
+                var temp = 0
+                temp = arr[arr[i] - 1]
+                arr[arr[i] - 1] = arr[i]
+                arr[i] = temp;
+                count++
+            }
+        }
+        i++
+    }
+    return count
 }
 
 fun main(args: Array<String>) {
@@ -28,7 +41,7 @@ fun main(args: Array<String>) {
 
     val n = scan.nextLine().trim().toInt()
 
-    val arr = scan.nextLine().split(" ").map{ it.trim().toInt() }.toTypedArray()
+    val arr = scan.nextLine().split(" ").map { it.trim().toInt() }.toTypedArray()
 
     val res = minimumSwaps(arr)
 
